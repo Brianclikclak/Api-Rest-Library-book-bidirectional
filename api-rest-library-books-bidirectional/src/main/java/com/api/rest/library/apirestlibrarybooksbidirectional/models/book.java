@@ -1,11 +1,9 @@
 package com.api.rest.library.apirestlibrarybooksbidirectional.models;
 
-import org.apache.tomcat.jni.Library;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,8 +14,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 
+@Entity
 @Table(name = "books", uniqueConstraints = @UniqueConstraint(columnNames = { "name" }))
-
 public class Book {
 
     @Id
