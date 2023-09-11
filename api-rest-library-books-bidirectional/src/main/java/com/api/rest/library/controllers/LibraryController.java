@@ -36,13 +36,13 @@ public class LibraryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Library> findLibraryById(@PathVariable int id) {
-        Optional<Library> OptionalLibrary = libraryRepository.findById(id);
+        Optional<Library> optionalLibrary = libraryRepository.findById(id);
 
-        if (!OptionalLibrary.isPresent()) {
+        if (!optionalLibrary.isPresent()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 
-        return ResponseEntity.ok(OptionalLibrary.get());
+        return ResponseEntity.ok(optionalLibrary.get());
 
     }
 
@@ -58,13 +58,13 @@ public class LibraryController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Library> editLibrary(@PathVariable int id, @Valid @RequestBody Library library) {
-        Optional<Library> OptionalLibrary = libraryRepository.findById(id);
+        Optional<Library> optionalLibrary = libraryRepository.findById(id);
 
-        if (!OptionalLibrary.isPresent()) {
+        if (!optionalLibrary.isPresent()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 
-        library.setId(OptionalLibrary.get().getId());
+        library.setId(optionalLibrary.get().getId());
         libraryRepository.save(library);
 
         return ResponseEntity.noContent().build();
@@ -72,13 +72,13 @@ public class LibraryController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Library> deleteLibrary(@PathVariable int id) {
-        Optional<Library> OptionalLibrary = libraryRepository.findById(id);
+        Optional<Library> optionalLibrary = libraryRepository.findById(id);
 
-        if (!OptionalLibrary.isPresent()) {
+        if (!optionalLibrary.isPresent()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 
-        libraryRepository.delete(OptionalLibrary.get());
+        libraryRepository.delete(optionalLibrary.get());
         return ResponseEntity.noContent().build();
     }
 
